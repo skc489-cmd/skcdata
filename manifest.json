@@ -1,0 +1,22 @@
+{
+  "name": "청춘 기억 저장소",
+  "short_name": "청춘 기억 저장소",
+  "description": "어르신들을 위한 뇌 건강 및 기억 훈련 퀴즈 앱",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#FDF6EC",
+  "theme_color": "#1A3C34",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
