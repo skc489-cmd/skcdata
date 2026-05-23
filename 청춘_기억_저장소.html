@@ -22,7 +22,7 @@
   --green: #A5D6A7;
   --card-bg: rgba(255, 255, 255, 0.95);
   --shadow: 0 15px 35px rgba(26, 60, 52, 0.08);
-  --shadow-hover: 0 25px 50px rgba(26, 60, 52, 0.15);
+  --shadow-hover: 0 20px 40px rgba(26, 60, 52, 0.12);
 }
 
 /* 스크롤바 디자인 최적화 (어르신들이 다루기 편리하도록 둥글고 부드러운 형태로 마감) */
@@ -60,18 +60,18 @@ body {
   position: relative;
 }
 
-/* 마우스를 따라 은은하게 움직이는 현대적인 배경 조명 효과(Glow Effect) */
+/* 눈의 피로를 방지하기 위해 마우스 움직임에 반응하지 않고, 화면 중앙에 부드럽게 고정된 정적 배경 조명 */
 .bg-glow {
   position: fixed;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(165, 214, 167, 0.2) 0%, rgba(230, 126, 34, 0.06) 40%, transparent 70%);
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(165, 214, 167, 0.15) 0%, rgba(230, 126, 34, 0.04) 40%, transparent 70%);
   border-radius: 50%;
-  pointer-events: none; /* 마우스 클릭 등을 방해하지 않도록 터치 제외 */
-  transform: translate(-50%, -50%);
-  z-index: 0; /* 배경 레이어로 위치 지정 */
-  transition: left 0.15s cubic-bezier(0.25, 0.8, 0.25, 1), top 0.15s cubic-bezier(0.25, 0.8, 0.25, 1);
-  will-change: left, top;
+  pointer-events: none;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%); /* 정확히 화면 정중앙에 고정 */
+  z-index: 0;
 }
 
 header {
@@ -172,17 +172,28 @@ header h1 {
   border-color: #ccc;
 }
 
-/* 퀴즈 메인 컨테이너: 뷰포트 높이에 맞춤 설계하여 절대 밖으로 밀려나지 않음 */
+/* 퀴즈 메인 컨테이너: 가로 정렬(row)로 개편하여 우측 네비게이션을 단독 배치 */
 #quiz {
   flex: 1;
   display: none;
-  flex-direction: column;
+  flex-direction: row; /* 가로형(좌측: 문제 카드 / 우측: 네비게이션 버튼바) */
+  gap: 24px; /* 좌우 공간 분리 여백 */
   padding: 1.5rem;
-  max-width: 850px;
+  max-width: 1050px; /* 우측 사이드바가 들어가므로 최대 너비 넉넉히 지정 */
   margin: 0 auto;
   width: 100%;
-  height: calc(100vh - 90px); /* 헤더를 제외한 높이 100% 사용 */
+  height: calc(100vh - 90px); /* 헤더를 제외한 전체 높이 활용 */
   z-index: 5;
+  align-items: stretch; /* 내부 자식들이 동일한 높이를 갖도록 설정 */
+}
+
+/* 퀴즈 좌측 콘텐츠 영역 (카테고리 정보 + 질문 카드) */
+.quiz-content-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0; /* Flex 내 텍스트 오버플로우 및 잘림 방지용 핵심 코드 */
+  height: 100%;
 }
 
 .qheader {
@@ -190,7 +201,7 @@ header h1 {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1.2rem;
-  flex-shrink: 0; /* 헤더는 크기가 줄어들지 않도록 고정 */
+  flex-shrink: 0; /* 헤더 크기는 늘어나거나 줄어들지 않고 고정 */
 }
 .badge {
   background: var(--primary);
@@ -207,10 +218,10 @@ header h1 {
   color: var(--primary);
 }
 
-/* 프리미엄 3D 퀴즈 카드 디자인 */
+/* 프리미엄 퀴즈 카드 디자인: 어르신들의 눈 어지러움과 인지 피로를 막기 위해 3D 회전 및 틸트 효과 제거 */
 .card {
   background: var(--card-bg);
-  backdrop-filter: blur(12px); /* 글래스모피즘 효과 */
+  backdrop-filter: blur(12px); /* 현대적이고 우아한 글래스모피즘 효과 */
   -webkit-backdrop-filter: blur(12px);
   flex: 1;
   border-radius: 35px;
@@ -222,18 +233,15 @@ header h1 {
   border: 4px solid #F0F4C3;
   position: relative;
   overflow: hidden;
-  transition: box-shadow 0.3s ease, transform 0.1s ease-out; /* 마우스 움직임에 쫀득하게 반응 */
-  transform-style: preserve-3d; /* 입체 효과 극대화 */
-  perspective: 1000px;
-  min-height: 0; /* flex 자식 요소의 오버플로우 방지를 위한 핵심 설정 */
+  min-height: 0; /* 플렉스 구조에서 내부 요소 넘침 현상을 강제 방어 */
 }
 
-/* 카드 내부 스크롤 가능한 컨텐츠 영역 */
+/* 카드 내부 스크롤 가능한 독립 컨텐츠 영역 */
 .card-scroll-area {
   flex: 1;
-  overflow-y: auto; /* 본문이 길어지면 여기에만 스크롤바가 생김 */
+  overflow-y: auto; /* 질문이 길어지거나 힌트/정답이 열려도 이 카드 내부에서만 스크롤이 처리됨 */
   width: 100%;
-  padding-right: 8px; /* 스크롤바 여유 공간 */
+  padding-right: 8px; /* 스크롤바가 생길 때 컨텐츠가 밀리지 않도록 공간 배려 */
   margin-bottom: 1.5rem;
   display: flex;
   flex-direction: column;
@@ -251,7 +259,6 @@ header h1 {
   white-space: pre-wrap;
   text-align: center;
   line-height: 1.5;
-  transform: translateZ(30px); /* 3D 기울기 시 글씨가 살짝 튀어나와 보이도록 입체 처리 */
 }
 
 .hint-box {
@@ -265,7 +272,6 @@ header h1 {
   width: 100%;
   border-left: 8px solid #FBC02D;
   box-shadow: 0 4px 10px rgba(245,127,23,0.08);
-  transform: translateZ(20px);
 }
 
 /* 큼직하고 뚜렷하게 단독 노출되는 프리미엄 정답판 */
@@ -282,13 +288,13 @@ header h1 {
   text-align: center;
   box-shadow: 0 8px 20px rgba(230,126,34,0.1);
   opacity: 0;
-  transform: scale(0.9) translateZ(25px); /* 3D 카드 틸팅 궤적과 동일하게 입체 매핑 */
-  transition: opacity 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transform: scale(0.95);
+  transition: opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 .answer.show {
   display: block;
   opacity: 1;
-  transform: scale(1) translateZ(25px);
+  transform: scale(1);
 }
 
 /* 카드 하단 액션 버튼 배치 영역 */
@@ -296,11 +302,10 @@ header h1 {
   display: flex;
   gap: 15px;
   width: 100%;
-  flex-shrink: 0; /* 줄어들지 않도록 설정 */
-  transform: translateZ(15px);
+  flex-shrink: 0; /* 콘텐츠 길이에 따라 찌그러지지 않도록 크기 고정 */
 }
 
-/* 액션 버튼 공통 스타일 및 미크로 애니메이션 효과 */
+/* 액션 버튼 공통 스타일 및 미세 물리 기반 애니메이션 효과 */
 .btn-action {
   flex: 1;
   padding: 1.2rem;
@@ -330,53 +335,101 @@ header h1 {
 .btn-hint { background: #F39C12; }
 .btn-ans { background: #3498DB; }
 
-/* 하단 네비게이션: 절대 밀려나지 않고 화면 하단에 안전하게 안착 */
-.nav {
-  background: var(--white);
-  padding: 1.2rem;
+/* 우측 세로형 네비게이션: 절대로 밀려나지 않고 화면 우측에 고정 배치 */
+.nav-sidebar {
+  width: 160px; /* 네비게이션 바 고정 폭 */
   display: flex;
-  gap: 15px;
-  box-shadow: 0 -5px 20px rgba(26,60,52,0.06);
-  border-radius: 24px;
-  flex-shrink: 0; /* 절대 찌그러지거나 잘리지 않도록 고정 */
+  flex-direction: column; /* 세로 배치 구조 */
+  gap: 18px; /* 버튼 사이 여백 */
+  justify-content: center; /* 카드 높이 중앙에 일치하도록 정렬 */
+  flex-shrink: 0; /* 절대 찌그러지거나 잘리지 않도록 크기 보장 */
+  height: 100%;
 }
+
+/* 세로형 네비게이션 전용 입체 버튼 디자인 */
 .nav-btn {
-  flex: 1;
-  padding: 1.1rem;
+  width: 100%;
+  padding: 1.3rem 1rem;
   font-size: 1.55rem;
   font-weight: bold;
   border: none;
-  border-radius: 18px;
+  border-radius: 22px;
   cursor: pointer;
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* 아이콘을 위로, 한글 이름을 아래로 설계하여 높은 직관성 부여 */
   align-items: center;
   justify-content: center;
+  gap: 8px;
   color: white;
   font-family: 'Gowun Batang', serif;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.08);
   transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 .nav-btn:not(:disabled):hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.16);
 }
 .nav-btn:not(:disabled):active {
-  transform: translateY(1px);
+  transform: translateY(1px) scale(0.98);
 }
+
 .btn-home { background: #7F8C8D; }
 .btn-prev { background: #95A5A6; }
 .btn-next { background: var(--primary); }
+
 .nav-btn:disabled {
   opacity: .3;
   cursor: not-allowed;
   transform: none !important;
   box-shadow: none !important;
 }
+
+/* 스마트폰 및 화면 너비가 좁은 모바일(768px 이하) 환경 최적화 */
+@media (max-width: 768px) {
+  #quiz {
+    flex-direction: row; /* 모바일에서도 세로 버튼 배치의 편리함을 위해 우측 배열 유지 */
+    gap: 12px;
+    padding: 1rem 0.8rem;
+    height: calc(100vh - 80px);
+  }
+  .nav-sidebar {
+    width: 95px; /* 모바일 폭에 맞게 슬림화 */
+    gap: 12px;
+  }
+  .nav-btn {
+    padding: 1rem 0.5rem;
+    font-size: 1.25rem;
+    border-radius: 18px;
+    gap: 5px;
+  }
+  .nav-btn i {
+    width: 24px !important;
+    height: 24px !important; /* 아이콘 축소 */
+  }
+  .nav-btn span {
+    font-size: 1.1rem;
+  }
+  .card {
+    padding: 1.8rem 1.2rem;
+    border-radius: 24px;
+    border-width: 3px;
+  }
+  .qtext {
+    font-size: 1.85rem; /* 모바일에서 텍스트가 짤리지 않게 최적화 */
+  }
+  .actions {
+    gap: 10px;
+  }
+  .btn-action {
+    padding: 1rem;
+    font-size: 1.35rem;
+    border-radius: 14px;
+  }
+}
 </style>
 </head>
 <body>
-<!-- 마우스의 유기적 모션을 부드럽게 쫓아다니는 은은한 배경 조명 레이어 -->
+<!-- 정적으로 고정된 배경 조명 레이어 -->
 <div class="bg-glow"></div>
 
 <header>
@@ -392,36 +445,48 @@ header h1 {
   <div id="dashboard" class="month-grid"></div>
 </main>
 
-<!-- 퀴즈 게임 화면: 화면 하단에 버튼 바가 항상 안전하게 고정됨 -->
+<!-- 퀴즈 게임 화면: 좌측은 퀴즈 카드, 우측은 네비게이션 사이드바로 분할 -->
 <main id="quiz">
-  <div class="qheader">
-    <span id="category" class="badge">카테고리</span>
-    <span id="progress" class="prog">1 / 20</span>
-  </div>
-  
-  <!-- 3D 회전 카드 몸체 -->
-  <div class="card" id="quiz-card">
-    <!-- 카드 내부 콘텐츠 영역: 내용이 넘치면 여기에만 스크롤막대가 생성됨 -->
-    <div class="card-scroll-area">
-      <div id="question" class="qtext">질문</div>
-      <div id="hint-box" class="hint-box">💡 힌트: <span id="hint-text"></span></div>
-      
-      <!-- 큼직한 단독 정답판 (복원 완료) -->
-      <div id="answer" class="answer"></div>
+  <!-- 좌측: 문제 및 퀴즈 카드 콘텐츠 영역 -->
+  <div class="quiz-content-area">
+    <div class="qheader">
+      <span id="category" class="badge">카테고리</span>
+      <span id="progress" class="prog">1 / 20</span>
     </div>
     
-    <!-- 카드 내 하단 고정 액션 버튼 -->
-    <div id="actions" class="actions">
-      <button class="btn-action btn-hint" onclick="showHint()"><i data-lucide="lightbulb"></i> 힌트 보기</button>
-      <button class="btn-action btn-ans" onclick="checkAnswer()"><i data-lucide="help-circle"></i> 정답 확인</button>
+    <!-- 퀴즈 카드 몸체 -->
+    <div class="card" id="quiz-card">
+      <!-- 카드 내부 콘텐츠 영역: 내용이 넘치면 카드 내부에만 스크롤바가 자동 생성됨 -->
+      <div class="card-scroll-area">
+        <div id="question" class="qtext">질문</div>
+        <div id="hint-box" class="hint-box">💡 힌트: <span id="hint-text"></span></div>
+        
+        <!-- 큼직한 단독 정답판 -->
+        <div id="answer" class="answer"></div>
+      </div>
+      
+      <!-- 카드 내 하단 고정 액션 버튼 -->
+      <div id="actions" class="actions">
+        <button class="btn-action btn-hint" onclick="showHint()"><i data-lucide="lightbulb"></i> 힌트 보기</button>
+        <button class="btn-action btn-ans" onclick="checkAnswer()"><i data-lucide="help-circle"></i> 정답 확인</button>
+      </div>
     </div>
   </div>
   
-  <!-- 하단 고정 네비게이션 메뉴 -->
-  <div class="nav">
-    <button class="nav-btn btn-home" onclick="goHome()"><i data-lucide="home"></i> 홈</button>
-    <button id="prev-btn" class="nav-btn btn-prev" onclick="prev()"><i data-lucide="chevron-left"></i> 이전</button>
-    <button id="next-btn" class="nav-btn btn-next" onclick="next()"><span>다음</span> <i data-lucide="chevron-right"></i></button>
+  <!-- 우측: 독립형 세로 네비게이션 메뉴 (어르신들의 동선을 따뜻하게 배려하여 [다음 → 이전 → 홈] 순으로 세로 정렬) -->
+  <div class="nav-sidebar">
+    <button id="next-btn" class="nav-btn btn-next" onclick="next()">
+      <i data-lucide="chevron-right"></i>
+      <span>다음</span>
+    </button>
+    <button id="prev-btn" class="nav-btn btn-prev" onclick="prev()">
+      <i data-lucide="chevron-left"></i>
+      <span>이전</span>
+    </button>
+    <button class="nav-btn btn-home" onclick="goHome()">
+      <i data-lucide="home"></i>
+      <span>홈</span>
+    </button>
   </div>
 </main>
 
@@ -484,7 +549,7 @@ function init() {
     db.appendChild(box);
   });
   lucide.createIcons();
-  setupInteractions(); /* 현대적인 마우스 모션 인터랙션 바인딩 */
+  setupInteractions(); /* 인터랙션 모듈 구동 */
 }
 
 /* 주차 선택 후 퀴즈 풀이 진입 */
@@ -521,8 +586,12 @@ function render() {
   
   document.getElementById('actions').style.display = 'flex';
   document.getElementById('prev-btn').disabled = qIdx === 0;
+  
+  // 세로 정렬 네비게이션 스타일에 부합하도록 [아이콘(위) -> 글씨(아래)] 렌더링 유지
   const nb = document.getElementById('next-btn');
-  nb.innerHTML = qIdx === set.length - 1 ? '<span>완료!</span> <i data-lucide="check-circle"></i>' : '<span>다음</span> <i data-lucide="chevron-right"></i>';
+  nb.innerHTML = qIdx === set.length - 1 
+    ? '<i data-lucide="check-circle"></i><span>완료!</span>' 
+    : '<i data-lucide="chevron-right"></i><span>다음</span>';
   
   // 문제를 전환할 때 카드 스크롤 영역을 항상 맨 위로 초기화해주는 세심한 배려
   const scrollArea = document.querySelector('.card-scroll-area');
@@ -530,19 +599,13 @@ function render() {
     scrollArea.scrollTop = 0;
   }
   
-  // 문제 진입 시 입체 카드가 페이드인 되며 살짝 솟아오르는 리액션 연출
+  // 화면 요동침 없이 자연스럽게 페이드인 리액션만 적용
   const card = document.getElementById('quiz-card');
   if (card) {
     card.style.opacity = '0';
-    card.style.transform = 'translateY(15px) perspective(1000px) rotateX(0deg) rotateY(0deg)';
     setTimeout(() => {
-      card.style.transition = 'opacity 0.6s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1)';
+      card.style.transition = 'opacity 0.5s ease-out';
       card.style.opacity = '1';
-      card.style.transform = 'translateY(0) perspective(1000px) rotateX(0deg) rotateY(0deg)';
-      // 애니메이션 완료 후 마우스 반응형 전환 속도로 조율
-      setTimeout(() => {
-        card.style.transition = 'box-shadow 0.3s ease, transform 0.1s ease-out';
-      }, 600);
     }, 50);
   }
   
@@ -607,51 +670,43 @@ function goHome() {
   }
 }
 
-/* 현대적이고 미려한 마우스 인터랙션을 구현하는 고도화 모듈 */
+/* 어르신들의 인지적 피로 방지를 위해 마우스 트래킹 3D 흔들림 효과 전면 비활성화 */
 function setupInteractions() {
-  const card = document.getElementById('quiz-card');
-  const bgGlow = document.querySelector('.bg-glow');
-  
-  // 1. 마우스 위치를 실시간 트래킹하여 배경 조명 그라데이션 이동
-  document.addEventListener('mousemove', (e) => {
-    if (bgGlow) {
-      bgGlow.style.left = `${e.clientX}px`;
-      bgGlow.style.top = `${e.clientY}px`;
-    }
-  });
-
-  // 2. 퀴즈 카드 위에서 마우스 이동 감지 -> 3D 입체 틸트 효과 연출
-  if (card) {
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left; // 마우스의 카드 내 x 좌표
-      const y = e.clientY - rect.top;  // 마우스의 카드 내 y 좌표
-      
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-      
-      // 기울기 각도 계산 (마우스가 중심에서 멀어질수록 최대 약 8도까지 회전하도록 제어)
-      const rotateX = -(y - centerY) / 20;
-      const rotateY = (x - centerX) / 20;
-      
-      // 3D Matrix 변환 처리로 한층 깊이감 있는 기울임과 미세한 스케일 업 적용
-      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.015, 1.015, 1.015)`;
-      card.style.boxShadow = '0 30px 60px rgba(26, 60, 52, 0.16)';
-    });
-
-    // 마우스가 카드를 빠져나갔을 때 원래의 평온한 각도로 부드럽게 리턴
-    card.addEventListener('mouseleave', () => {
-      card.style.transition = 'box-shadow 0.5s ease, transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1)';
-      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
-      card.style.boxShadow = 'var(--shadow)';
-      
-      // 복원 완료 후 다시 실시간 반응 속도로 복구
-      setTimeout(() => {
-        card.style.transition = 'box-shadow 0.3s ease, transform 0.1s ease-out';
-      }, 500);
-    });
-  }
+  // 마우스 트래킹 이벤트 등록을 하지 않고, 화면 구성 요소들을 정적으로 고정하여 시각적 차분함을 유지합니다.
 }
+
+/* [신규 기능] 어르신들이 쉽고 빠르게 퀴즈를 푸실 수 있도록 키보드 Enter 및 Space 키 이벤트 바인딩 */
+document.addEventListener('keydown', (e) => {
+  // 퀴즈 진행 화면이 활성화되어 있을 때만 동작하도록 제어
+  const quizSection = document.getElementById('quiz');
+  if (quizSection && quizSection.style.display === 'flex') {
+    
+    // 1. Enter 키 입력 시: [정답 확인] 또는 [다음 문제] 실행
+    if (e.key === 'Enter') {
+      e.preventDefault(); // Enter 키 입력 시 발생할 수 있는 브라우저 기본 포커싱 동작 방지
+      
+      const ansText = document.getElementById('answer');
+      // 만약 정답 확인이 아직 안 된 상태라면, Enter 키로 '정답 확인' 실행
+      if (ansText.style.display === 'none' || !ansText.classList.contains('show')) {
+        checkAnswer();
+      } else {
+        // 이미 정답을 확인했다면, Enter 키로 '다음 문제' 혹은 '완료' 진행
+        next();
+      }
+    }
+    
+    // 2. Space 키 입력 시: [힌트 보기] 실행
+    if (e.key === ' ' || e.key === 'Spacebar' || e.code === 'Space') {
+      e.preventDefault(); // 스페이스바를 누를 때 브라우저 창이 덜컥거리며 밑으로 화면 스크롤되는 기본 기능 완벽 차단
+      
+      const hintBox = document.getElementById('hint-box');
+      // 힌트가 아직 화면에 표시되지 않은 상태라면 스페이스바로 힌트 보기 호출
+      if (hintBox && hintBox.style.display !== 'block') {
+        showHint();
+      }
+    }
+  }
+});
 
 window.onload = init;
 </script>
