@@ -458,6 +458,7 @@ header h1 {
     <div class="card" id="quiz-card">
       <!-- 카드 내부 콘텐츠 영역: 내용이 넘치면 카드 내부에만 스크롤바가 자동 생성됨 -->
       <div class="card-scroll-area">
+        <img id="quiz-image" src="" alt="퀴즈 이미지" style="display:none; max-width:90%; max-height:280px; border-radius:20px; margin-bottom:1.5rem; border:3px solid var(--green); box-shadow: 0 8px 20px rgba(0,0,0,0.1);">
         <div id="question" class="qtext">질문</div>
         <div id="hint-box" class="hint-box">💡 힌트: <span id="hint-text"></span></div>
         
@@ -577,6 +578,16 @@ function render() {
   document.getElementById('progress').textContent = `${qIdx + 1} / ${set.length}`;
   document.getElementById('hint-text').textContent = q.hint || '';
   document.getElementById('hint-box').style.display = 'none';
+  
+  // 이미지 표시 및 숨김 처리 로직 추가
+  const imgElement = document.getElementById('quiz-image');
+  if (q.image) {
+    imgElement.src = q.image;
+    imgElement.style.display = 'block';
+  } else {
+    imgElement.src = '';
+    imgElement.style.display = 'none';
+  }
   
   // 정답 텍스트 영역 초기화 및 클래스 제거
   const ansText = document.getElementById('answer');

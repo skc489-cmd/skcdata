@@ -1,11 +1,12 @@
-const CACHE_NAME = 'youth-memory-v3';
+const CACHE_NAME = 'youth-memory-v4';
 const ASSETS = [
   './',
   './index.html',
   './quizData.js',
   './manifest.json',
   './icon-192.png',
-  './icon-512.png'
+  './icon-512.png',
+  './word_puzzle.png'
 ];
 
 // 서비스 워커 설치 및 리소스 캐싱
