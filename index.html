@@ -245,9 +245,10 @@ header h1 {
   margin-bottom: 1.5rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start; /* Flexbox 세로 중앙정렬 시 상단 요소 짤림 현상 완벽 조치 */
   align-items: center;
   min-height: 0;
+  padding-top: 10px; /* 상단 테두리 안전 여백 확보 */
 }
 
 .qtext {
