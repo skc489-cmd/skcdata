@@ -9,6 +9,7 @@
  *   - question: 어르신들이 읽으실 퀴즈 질문 내용
  *   - answer: 퀴즈의 정답 텍스트
  *   - hint: 정답을 맞히기 어려우실 때 제공되는 도움말(힌트)
+ *   - image: 낱말 퀴즈 등 격자판 이미지가 필요한 경우 매칭될 이미지 파일명 (선택사항)
  */
 
 const WEEKLY_QUIZ_DATA = [
@@ -59,7 +60,7 @@ const WEEKLY_QUIZ_DATA = [
   {category:"꽃이름",question:"봄 들판에 홀씨 날리는 노란 꽃은?",answer:"민들레",hint:"바람에 씨가 날아가요."},
   {category:"과거회상",question:"봄 논에 벼 심는 일은?",answer:"모내기",hint:"허리가 아팠지요."},
   {category:"사물",question:"옛날 여인들 머리에 꽂던 장식품은?",answer:"비녀",hint:"쪽머리를 고정해요."},
-  {category:"초성 속담",question:"ㅅ ㅅ ㅂㄹ ㅇㄷㄲㅈ ㄱㄷ",answer:"세 살 버릇 여든까지 간다",hint:"어릴 때 버릇이 중요해요."},
+  {category:"초성 속담",question:"ㅅ ㅅ ㅂㄹ ㅇㄷㄲㅈ ㄱㄷ",answer:"세 살 버릇 여든까지 간다",hint:"어릴 때부터 잘 배워야 해요."},
 ],
 [
   // 5월 3주차 (인덱스 2)
@@ -204,7 +205,7 @@ const WEEKLY_QUIZ_DATA = [
   {category:"사물",question:"여름 음식을 보관하던 항아리를 식히던 방법은?",answer:"우물",hint:"우물에 담가 시원하게 했어요."},
   {category:"동물",question:"여름 더위에 나타나는 얼룩덜룩 피부의 동물은?",answer:"도마뱀",hint:"벽을 잘 타요."},
   {category:"초성 속담",question:"ㅌㄲ ㅁㅇ ㅌㅅ",answer:"티끌 모아 태산",hint:"조금씩 쌓이면 크게 돼요."},
-  {category:"낱말맞추기",question:"노란색 칸에 공통으로 들어갈 네 글자 단어를 맞혀보세요!",answer:"어버이날",hint:"부모님의 은혜에 감사하며 가슴에 카네이션을 달아드리는 5월 8일은 무슨 날일까요?",image:"word_puzzle_3.png"},
+  {category:"낱말맞추기",question:"노란색 칸에 공통으로 들어갈 네 글자 단어를 맞혀보세요!",answer:"배우선수",hint:"영화나 연극 등에서 역할을 맡아 연기하는 사람(배우)과 운동 경기에 출전하여 뛰는 사람(선수)을 아울러 이르는 말은 무엇일까요?",image:"word_puzzle_3.png"},
 ],
 
 // ==========================================
@@ -232,7 +233,7 @@ const WEEKLY_QUIZ_DATA = [
   {category:"사물",question:"여름 부채 중 둥근 모양을 한 것은?",answer:"둥근부채",hint:"시원한 바람이 나요."},
   {category:"동물",question:"논에서 개구리를 잡아먹는 하얀 새는?",answer:"백로",hint:"긴 목과 다리가 우아해요."},
   {category:"초성 속담",question:"ㅋ ㅅㅇ ㄷ ㅋ ㄴㄱ ㅍ ㅅㅇ ㄷ ㅍ ㄴㄷ",answer:"콩 심은 데 콩 나고 팥 심은 데 팥 난다",hint:"원인대로 결과가 나와요."},
-  {category:"낱말맞추기",question:"노란색 칸에 공통으로 들어갈 네 글자 단어를 맞혀보세요!",answer:"인삼장수",hint:"예전에 인삼을 궤짝이나 보따리에 싸서 지고 다니며 팔던 사람을 무엇이라 불렀을까요?",image:"word_puzzle_4.png"},
+  {category:"낱말맞추기",question:"노란색 칸에 공통으로 들어갈 네 글자 단어를 맞혀보세요!",answer:"바디워시",hint:"목욕할 때 몸을 깨끗이 씻기 위해 물총처럼 짜서 쓰는 액체 비누를 무엇이라고 할까요?",image:"word_puzzle_4.png"},
 ],
 [
   // 7월 2주차 (인덱스 9)
@@ -256,7 +257,7 @@ const WEEKLY_QUIZ_DATA = [
   {category:"사물",question:"밤에 불을 밝히던 호롱불의 기름은?",answer:"참기름",hint:"심지에 불을 붙였어요."},
   {category:"동물",question:"여름 밤 연못에서 우는 황소개구리는?",answer:"황소개구리",hint:"소 울음처럼 크게 울어요."},
   {category:"초성 속담",question:"ㄱㄴ ㅁㅇ ㄱㅇㅇ ㅇㄴ ㅁㅇ ㄱㄷ",answer:"가는 말이 고와야 오는 말이 곱다",hint:"친절이 친절을 불러요."},
-  {category:"낱말맞추기",question:"노란색 칸에 공통으로 들어갈 네 글자 단어를 맞혀보세요!",answer:"바디워시",hint:"목욕할 때 몸을 깨끗이 씻기 위해 물총처럼 짜서 쓰는 액체 비누를 무엇이라고 할까요?",image:"word_puzzle_5.png"},
+  {category:"낱말맞추기",question:"노란색 칸에 공통으로 들어갈 네 글자 단어를 맞혀보세요!",answer:"도토리묵",hint:"가을산의 도토리 열매를 주워 가루로 낸 뒤 쑤어서 양념장에 찍어 먹는 묵 요리는 무엇일까요?",image:"word_puzzle_5.png"},
 ],
 [
   // 7월 3주차 (인덱스 10)
@@ -280,7 +281,6 @@ const WEEKLY_QUIZ_DATA = [
   {category:"사물",question:"여름 해변에서 눈을 보호하는 것은?",answer:"선글라스",hint:"자외선을 막아줘요."},
   {category:"동물",question:"여름 바닷가에서 모래를 파는 집게 달린 동물은?",answer:"게",hint:"옆으로 걸어요."},
   {category:"초성 속담",question:"ㅅ ㅇㄱ ㅇㅇㄱ ㄱㅊㄷ",answer:"소 잃고 외양간 고친다",hint:"미리미리 준비해야 해요."},
-  {category:"낱말맞추기",question:"노란색 칸에 공통으로 들어갈 네 글자 단어를 맞혀보세요!",answer:"도토리묵",hint:"가을산의 도토리 열매를 주워 가루로 낸 뒤 쑤어서 양념장에 찍어 먹는 묵 요리는 무엇일까요?",image:"word_puzzle_6.png"},
 ],
 [
   // 7월 4주차 (인덱스 11)
