@@ -205,7 +205,7 @@ const WEEKLY_QUIZ_DATA = [
   {category:"사물",question:"여름 음식을 보관하던 항아리를 식히던 방법은?",answer:"우물",hint:"우물에 담가 시원하게 했어요."},
   {category:"동물",question:"여름 더위에 나타나는 얼룩덜룩 피부의 동물은?",answer:"도마뱀",hint:"벽을 잘 타요."},
   {category:"초성 속담",question:"ㅌㄲ ㅁㅇ ㅌㅅ",answer:"티끌 모아 태산",hint:"조금씩 쌓이면 크게 돼요."},
-  {category:"낱말맞추기",question:"노란색 칸에 공통으로 들어갈 네 글자 단어를 맞혀보세요!",answer:"배구선수",hint:"배구 네트를 사이에 두고 공을 쳐서 상대방 진영으로 넘기는 구기 운동의 전문 선수를 말해요.",image:"word_puzzle_3.png"},
+  {category:"낱말맞추기",question:"노란색 칸에 공통으로 들어갈 네 글자 단어를 맞혀보세요!",answer:"오토바이",hint:"바퀴가 두 개 달린, 엔진을 장착해 빠르게 달릴 수 있는 이륜자동차는 무엇일까요?",image:"word_puzzle_3.png"},
 ],
 
 // ==========================================
@@ -233,7 +233,7 @@ const WEEKLY_QUIZ_DATA = [
   {category:"사물",question:"여름 부채 중 둥근 모양을 한 것은?",answer:"둥근부채",hint:"시원한 바람이 나요."},
   {category:"동물",question:"논에서 개구리를 잡아먹는 하얀 새는?",answer:"백로",hint:"긴 목과 다리가 우아해요."},
   {category:"초성 속담",question:"ㅋ ㅅㅇ ㄷ ㅋ ㄴㄱ ㅍ ㅅㅇ ㄷ ㅍ ㄴㄷ",answer:"콩 심은 데 콩 나고 팥 심은 데 팥 난다",hint:"원인대로 결과가 나와요."},
-  {category:"낱말맞추기",question:"노란색 칸에 공통으로 들어갈 네 글자 단어를 맞혀보세요!",answer:"오토바이",hint:"바퀴가 두 개 달린, 엔진을 장착해 빠르게 달릴 수 있는 이륜자동차는 무엇일까요?",image:"word_puzzle_4.png"},
+  {category:"낱말맞추기",question:"노란색 칸에 공통으로 들어갈 네 글자 단어를 맞혀보세요!",answer:"바디워시",hint:"목욕할 때 몸을 깨끗이 씻기 위해 물총처럼 짜서 쓰는 액체 비누를 무엇이라고 할까요?",image:"word_puzzle_4.png"},
 ],
 [
   // 7월 2주차 (인덱스 9)
@@ -257,7 +257,7 @@ const WEEKLY_QUIZ_DATA = [
   {category:"사물",question:"밤에 불을 밝히던 호롱불의 기름은?",answer:"참기름",hint:"심지에 불을 붙였어요."},
   {category:"동물",question:"여름 밤 연못에서 우는 황소개구리는?",answer:"황소개구리",hint:"소 울음처럼 크게 울어요."},
   {category:"초성 속담",question:"ㄱㄴ ㅁㅇ ㄱㅇㅇ ㅇㄴ ㅁㅇ ㄱㄷ",answer:"가는 말이 고와야 오는 말이 곱다",hint:"친절이 친절을 불러요."},
-  {category:"낱말맞추기",question:"노란색 칸에 공통으로 들어갈 네 글자 단어를 맞혀보세요!",answer:"바디워시",hint:"목욕할 때 몸을 깨끗이 씻기 위해 물총처럼 짜서 쓰는 액체 비누를 무엇이라고 할까요?",image:"word_puzzle_5.png"},
+  {category:"낱말맞추기",question:"노란색 칸에 공통으로 들어갈 네 글자 단어를 맞혀보세요!",answer:"도토리묵",hint:"가을산의 도토리 열매를 주워 가루로 낸 뒤 쑤어서 양념장에 찍어 먹는 묵 요리는 무엇일까요?",image:"word_puzzle_5.png"},
 ],
 [
   // 7월 3주차 (인덱스 10)
@@ -281,7 +281,7 @@ const WEEKLY_QUIZ_DATA = [
   {category:"사물",question:"여름 해변에서 눈을 보호하는 것은?",answer:"선글라스",hint:"자외선을 막아줘요."},
   {category:"동물",question:"여름 바닷가에서 모래를 파는 집게 달린 동물은?",answer:"게",hint:"옆으로 걸어요."},
   {category:"초성 속담",question:"ㅅ ㅇㄱ ㅇㅇㄱ ㄱㅊㄷ",answer:"소 잃고 외양간 고친다",hint:"미리미리 준비해야 해요."},
-  {category:"낱말맞추기",question:"노란색 칸에 공통으로 들어갈 네 글자 단어를 맞혀보세요!",answer:"도토리묵",hint:"가을산의 도토리 열매를 주워 가루로 낸 뒤 쑤어서 양념장에 찍어 먹는 묵 요리는 무엇일까요?",image:"word_puzzle_6.png"},
+  {category:"낱말맞추기",question:"노란색 칸에 공통으로 들어갈 네 글자 단어를 맞혀보세요!",answer:"인상주의",hint:"19세기 후반 프랑스를 중심으로 일어난 미술 사조로, 빛과 색채의 순간적인 효과를 중시하며 모네, 르누아르 등이 대표적인 이 화풍은 무엇일까요?",image:"word_puzzle_6.png"},
 ],
 [
   // 7월 4주차 (인덱스 11)
@@ -305,6 +305,6 @@ const WEEKLY_QUIZ_DATA = [
   {category:"사물",question:"여름 과일 껍질을 깎는 도구는?",answer:"과일 칼",hint:"얇게 깎아내요."},
   {category:"동물",question:"수박씨를 먹으러 오는 참새는?",answer:"참새",hint:"짹짹 우는 작은 새예요."},
   {category:"초성 속담",question:"ㅎㄹㅇㄷ ㅈ ㅁ ㅎㅁ ㅇㄷ",answer:"호랑이도 제 말 하면 온다",hint:"없는 사람 얘기하면 나타나요."},
-  {category:"낱말맞추기",question:"노란색 칸에 공통으로 들어갈 네 글자 단어를 맞혀보세요!",answer:"인상주의",hint:"19세기 후반 프랑스를 중심으로 일어난 미술 사조로, 빛과 색채의 순간적인 효과를 중시하며 모네, 르누아르 등이 대표적인 이 화풍은 무엇일까요?",image:"word_puzzle_7.png"},
+  {category:"낱말맞추기",question:"노란색 칸에 공통으로 들어갈 네 글자 단어를 맞혀보세요!",answer:"배구선수",hint:"배구 네트를 사이에 두고 공을 쳐서 상대방 진영으로 넘기는 구기 운동의 전문 선수를 말해요.",image:"word_puzzle_7.png"},
 ]
 ];

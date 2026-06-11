@@ -1,4 +1,4 @@
-const CACHE_NAME = 'youth-memory-v8';
+const CACHE_NAME = 'youth-memory-v9';
 const ASSETS = [
   './',
   './index.html',
@@ -10,7 +10,9 @@ const ASSETS = [
   './word_puzzle_2.png',
   './word_puzzle_3.png',
   './word_puzzle_4.png',
-  './word_puzzle_5.png'
+  './word_puzzle_5.png',
+  './word_puzzle_6.png',
+  './word_puzzle_7.png'
 ];
 
 // 서비스 워커 설치 및 리소스 캐싱
