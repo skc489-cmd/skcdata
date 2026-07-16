@@ -1,4 +1,4 @@
-const CACHE_NAME = 'youth-memory-v17';
+const CACHE_NAME = 'youth-memory-v18';
 const ASSETS = [
   './',
   './index.html',
