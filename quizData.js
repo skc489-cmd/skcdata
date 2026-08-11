@@ -393,7 +393,7 @@ const WEEKLY_QUIZ_DATA = [
   {category:"지리",question:"우리나라 수도는 어디일까요?",answer:"서울",hint:"대통령이 계시는 곳입니다."},
   {category:"기념일",question:"태극기를 높이 다는 날을 무엇이라고 할까요?",answer:"국경일",hint:"광복절, 삼일절 등이 있습니다."},
   {category:"상식",question:"우리나라 국기인 '태극기'의 네 모서리에 있는 검은색 선 4개의 이름을 합쳐서 뭐라고 부를까요?",answer:"건곤감리",hint:"하늘, 땅, 물, 불을 뜻하는 네 글자예요"},
-  {category:"사물",question:"광복절에 가장 많이 듣는 노래는?",answer:"애국가",hint:"행사 때 모두 일어나서 부릅니다."},
+  {category:"역사",question:"8월 15일 광복절은 우리나라가 어느 나라의 지배에서 벗어나 빛을 되찾은 날일까요?",answer:"일본(일제강점기)",hint:"이웃 나라 이름을 대시면 돼요"},
   {category:"역사",question:"외국에서 우리나라를 부를 때 '코리아(Korea)'라고 부르는데, 이 말은 옛날 어느 나라 이름에서 나온 것일까요?",answer:"고려",hint:"태조 왕건이 세운 나라예요"}
 ],
 [
