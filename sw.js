@@ -1,4 +1,4 @@
-const CACHE_NAME = 'youth-memory-v20';
+const CACHE_NAME = 'youth-memory-v21';
 const ASSETS = [
   './',
   './index.html',
@@ -41,14 +41,24 @@ self.addEventListener('activate', (e) => {
   );
 });
 
-// 오프라인 상태 및 빠른 성능을 위한 캐시 우선 반환 패턴
+// ✅ 네트워크 우선 전략 (Network First)
+// 항상 서버에서 최신 파일을 먼저 받아오고,
+// 네트워크 오류 시에만 캐시를 사용합니다.
+// 카카오톡 인앱 브라우저 등 캐시 문제를 방지합니다.
 self.addEventListener('fetch', (e) => {
   e.respondWith(
-    caches.match(e.request).then((cachedResponse) => {
-      // 캐시된 응답이 있으면 반환하고, 없으면 네트워크 요청 수행
-      return cachedResponse || fetch(e.request).catch(() => {
-        // 둘 다 실패하고 HTML 요청인 경우 대체할 오프라인 대응이 필요하다면 여기에 작성
-      });
-    })
+    fetch(e.request)
+      .then((networkResponse) => {
+        // 네트워크 응답 성공 시 캐시도 최신으로 업데이트
+        const responseClone = networkResponse.clone();
+        caches.open(CACHE_NAME).then((cache) => {
+          cache.put(e.request, responseClone);
+        });
+        return networkResponse;
+      })
+      .catch(() => {
+        // 네트워크 실패(오프라인) 시 캐시에서 반환
+        return caches.match(e.request);
+      })
   );
 });
