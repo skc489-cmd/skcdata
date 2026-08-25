@@ -410,7 +410,7 @@ const WEEKLY_QUIZ_DATA = [
   {category:"음식",question:"\"집 나간 며느리도 돌아온다.\"는 말로 유명한 가을 생선은?",answer:"전어",hint:"구워 먹으면 더욱 맛있습니다."},
   {category:"꽃이름",question:"들판에 피는 노란 야생 국화를 무엇이라고 할까요?",answer:"들국화",hint:"가을 산과 들에서 쉽게 볼 수 있습니다."},
   {category:"날씨",question:"처서가 지나면 선선하게 불어오는 바람은?",answer:"가을바람",hint:"여름 더위를 식혀 줍니다."},
-  {category:"동물",question:"가을 들판에서 자주 볼 수 있는 곤충으로 길게 나는 것은?",answer:"잠자리",hint:"아이들이 잠자리채로 잡곤 했습니다."},
+  {category:"기념일",question:"음력 7월 15일로, 농사일을 잠시 멈추고 일꾼들에게 새 옷과 돈을 주며 하루 푹 쉬게 했던 명절은 무엇일까요?",answer:"백중",hint:"온갖 곡식과 과일의 씨앗 100가지를 갖춘다는 뜻도 있습니다."},
   {category:"동물",question:"논두렁에서 흔히 볼 수 있는 풀을 잘 뛰어다니는 곤충은?",answer:"메뚜기",hint:"벼 사이를 폴짝폴짝 뜁니다."},
   {category:"과거회상",question:"농사가 잘되어 곡식이 많이 나는 것을 무엇이라고 할까요?",answer:"풍년",hint:"농부들이 가장 바라는 일입니다."},
   {category:"음식",question:"여름에 초록색이었다가 빨갛게 익어 수확하는 채소는?",answer:"고추",hint:"김장 양념에도 꼭 들어갑니다."},
@@ -421,7 +421,7 @@ const WEEKLY_QUIZ_DATA = [
   {category:"자연",question:"넓게 펼쳐진 논과 밭을 통틀어 무엇이라고 할까요?",answer:"들판",hint:"가을이면 황금빛으로 물듭니다."},
   {category:"사물",question:"벼를 심고 거두는 곳은 어디일까요?",answer:"논",hint:"물을 가두어 농사짓는 곳입니다."},
   {category:"과거회상",question:"익은 곡식을 거두어들이는 일을 무엇이라고 할까요?",answer:"추수",hint:"가을 농사의 마지막입니다."},
-  {category:"상식",question:"가을 하늘을 표현하는 사자성어는?",answer:"천고마비",hint:"하늘은 높고 말은 살찐다는 뜻입니다."},
+  {category:"상식",question:"'하늘은 높고 푸르며, 말은 살찐다'는 뜻으로, 풍요롭고 아름다운 가을을 나타내는 사자성어는?",answer:"천고마비",hint:"'하늘 천(天)', '높을 고(高)'로 시작합니다."},
   {category:"날씨",question:"가을이 오면 아침마다 풀잎에 맺히는 작은 물방울은?",answer:"이슬",hint:"햇살을 받으면 반짝반짝 빛납니다."}
 ],
 [
